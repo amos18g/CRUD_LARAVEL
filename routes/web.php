@@ -50,6 +50,6 @@ Route::get('/logout', [SessionsController::class, 'destroy'])
 // })->middleware('guest');
 
 
-Route::get('admin', [AdminController::class, 'index'])
-->middleware('auth.admin')
+Route::get('admin', [AdminController::class, 'index']) //solo podra acceder el admin
+->middleware('auth.admin')//indicando que es necesario que un admin este logeado
 ->name('admin.index');
