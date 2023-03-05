@@ -22,12 +22,14 @@ Route::get('/', function () {
 
 
 Route::get('/registrarse', [RegisterController::class, 'create'])
+->middleware('guest')
 ->name('register.index');
 
 Route::post('/registrarse', [RegisterController::class, 'store'])
 ->name('register.store');
 
 Route::get('/login', [SessionsController::class, 'create'])
+->middleware('guest')
 ->name('login.index');
 
 Route::post('/login', [SessionsController::class, 'store'])
