@@ -20,10 +20,15 @@ class SessionsController extends Controller
                 'message' => 'El email o la contraseña son incorrectos,
                 vuelve a intentar',
             ]);           
+        } else {
+            if(auth()-> user() -> role == 'admin'){
+                return redirect() -> route('admin.index');
+            }else{
+                return redirect()->to('/');
+            }
         }
 
-
-        return redirect()->to('/');
+        
     }
 
     public function destroy() {

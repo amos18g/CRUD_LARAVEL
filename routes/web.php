@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use GuzzleHttp\Middleware;
@@ -39,3 +40,16 @@ Route::post('/login', [SessionsController::class, 'store'])
 
 Route::get('/logout', [SessionsController::class, 'destroy'])
 ->name('login.destroy');
+
+// Route::get('/pruebaLogin', function(){
+//     return('Esta pagina solo iniciara si estas logeado');
+// })->middleware('auth');
+
+// Route::get('/pruebaNoLogin', function(){
+//     return('Esta pagina iniciara sin necesidad de estar logeado');
+// })->middleware('guest');
+
+
+Route::get('admin', [AdminController::class, 'index'])
+->middleware('auth.admin')
+->name('admin.index');
